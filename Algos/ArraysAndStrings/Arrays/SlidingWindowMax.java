@@ -28,28 +28,28 @@ Follow up:
 Could you solve it in linear time?
      */
 
-    private int[] findSlidingWindowMaximum(int[] input, int k){
+    private int[] findSlidingWindowMaximum(int[] input, int k) {
 
-        if(k<=0 || input==null){
+        if (k <= 0 || input == null) {
             return new int[0];
         }
 
-        int n=input.length;
-        int[] max=new int[n-k+1];
-        Deque<Integer> indexToMax=new ArrayDeque<>();
-        int ind=0;
+        int n = input.length;
+        int[] max = new int[n - k + 1];
+        Deque<Integer> indexToMax = new ArrayDeque<>();
+        int ind = 0;
 
-        for(int current=0;current<input.length;current++){
+        for (int current = 0; current < input.length; current++) {
 
-            while (!indexToMax.isEmpty()&& indexToMax.peek()< current-k+1)
+            while (!indexToMax.isEmpty() && indexToMax.peek() < current - k + 1)
                 indexToMax.poll();
 
-            while(!indexToMax.isEmpty()&& input[indexToMax.peekLast()]<input[current])
+            while (!indexToMax.isEmpty() && input[indexToMax.peekLast()] < input[current])
                 indexToMax.pollLast();
 
             indexToMax.offer(current);
 
-            if(current>=k-1) {
+            if (current >= k - 1) {
                 max[ind] = input[indexToMax.peek()];
                 ind++;
             }
@@ -57,14 +57,13 @@ Could you solve it in linear time?
         return max;
     }
 
-    public static void main(String args[]){
-        SlidingWindowMax sm=new SlidingWindowMax();
+    public static void main(String[] args) {
+        SlidingWindowMax sm = new SlidingWindowMax();
         System.out.println("***SLIDING WINDOW MAXIMUM***");
-        int[] input=new Inputs().getIntArray();
-        int k=new Inputs().getANumber();
-        for (int n:sm.findSlidingWindowMaximum(input,k))
-        {
-         System.out.print(n+" ");
+        int[] input = new Inputs().getIntArray();
+        int k = new Inputs().getANumber();
+        for (int n : sm.findSlidingWindowMaximum(input, k)) {
+            System.out.print(n + " ");
         }
     }
 }

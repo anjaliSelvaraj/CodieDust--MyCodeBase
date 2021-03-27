@@ -15,25 +15,26 @@ Note:
 You may assume k is always valid, 1 ≤ k ≤ array's length.
      */
 
-    int kthLargest(int[] arr, int k){
-        k=arr.length-k; // this is the position of the kth largest after the array gets sorted.
-        int start=0;
-        int end=arr.length-1;
+    int kthLargest(int[] arr, int k) {
+        k = arr.length - k; // this is the position of the kth largest after the array gets sorted.
+        int start = 0;
+        int end = arr.length - 1;
 
-        while(start<end){
-            int pos= QuickSort.partition(arr,start,end);
-            if(pos<k)
-                start=pos+1;
-            else if(pos>k)
-                end=pos-1;
+        while (start < end) {
+            int pos = QuickSort.partition(arr, start, end);
+            if (pos < k)
+                start = pos + 1;
+            else if (pos > k)
+                end = pos - 1;
             else break;
         }
-     return arr[k];
+        return arr[k];
     }
-    public static void main(String args[]){
-        KthLargest kl=new KthLargest();
+
+    public static void main(String[] args) {
+        KthLargest kl = new KthLargest();
         System.out.println("***Kth LARGEST***");
-       int kthLargest= kl.kthLargest(new Inputs().getIntArray(),new Inputs().getANumber());
-       System.out.println(kthLargest);
+        int kthLargest = kl.kthLargest(new Inputs().getIntArray(), new Inputs().getANumber());
+        System.out.println(kthLargest);
     }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
+
 /**
  * Created by ANJALI on 2/28/2017.
  */
@@ -13,32 +14,32 @@ ANAGRAM: a word, phrase, or name formed by rearranging the letters of another, s
  */
 
 //Logic: if two strings are anagrams, they should be same after sorting the characters in it.
- class GroupAnagrams {
-     //The following is the data structure in which a map holds a string value as key and the corresponding values of a key are stored in the arraylist
-     private HashMap<String,ArrayList<String>> sortedAnag=new HashMap<>();
-     private String[] str;
+class GroupAnagrams {
+    //The following is the data structure in which a map holds a string value as key and the corresponding values of a key are stored in the arraylist
+    private final HashMap<String, ArrayList<String>> sortedAnag = new HashMap<>();
+    private String[] str;
 
     private void groupAnagramsInput() {
-        Scanner s=new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
         System.out.println("Enter the number of elements");
-        int n=s.nextInt();
-        str=new String[n];
+        int n = s.nextInt();
+        str = new String[n];
         System.out.println("Enter the strings");
-        for(int i=0;i<n;i++)
-            str[i]=s.next();
+        for (int i = 0; i < n; i++)
+            str[i] = s.next();
     }
-    private void groupAnagrams()
-    {
-        for(String s:str) {
-            char[] charsSorted=s.toCharArray();
+
+    private void groupAnagrams() {
+        for (String s : str) {
+            char[] charsSorted = s.toCharArray();
             Arrays.sort(charsSorted);
-            String key=String.valueOf(charsSorted);
+            String key = String.valueOf(charsSorted);
             /*
             the string after sorting their respective characters is used as the key,
             so that when its anagram is found, they can be entered into the arraylist
              */
 
-            if(sortedAnag.containsKey(key))
+            if (sortedAnag.containsKey(key))
                 (sortedAnag.get(key)).add(s);
             /*       This method returns the arraylist.
             If the key already exists,add the actual string to the already existing arraylist.
@@ -47,31 +48,29 @@ ANAGRAM: a word, phrase, or name formed by rearranging the letters of another, s
             but here we want to preserve those values to sort them.
             therefore we check this condition.
              */
-            else
-            {
-                ArrayList<String> stringList=new ArrayList<>();
+            else {
+                ArrayList<String> stringList = new ArrayList<>();
                 stringList.add(s);
-                sortedAnag.put(key,stringList);
+                sortedAnag.put(key, stringList);
             }
         }
-        int index=0;
-        for(String keys:sortedAnag.keySet()) {
+        int index = 0;
+        for (String keys : sortedAnag.keySet()) {
             for (String s : sortedAnag.get(keys)) {
                 str[index] = s;
                 index++;
             }
         }
     }
-     public static void main(String args[])
-     {
-         GroupAnagrams ga=new GroupAnagrams();
-         ga.groupAnagramsInput();
-         ga.groupAnagrams();
-         for(String s:ga.str)
-           System.out.print(s +"\t");
 
-     }
+    public static void main(String[] args) {
+        GroupAnagrams ga = new GroupAnagrams();
+        ga.groupAnagramsInput();
+        ga.groupAnagrams();
+        for (String s : ga.str)
+            System.out.print(s + "\t");
 
+    }
 
 
 }

@@ -22,37 +22,39 @@ Example 2:
 Answer: 3
      */
 
-    int r,c;
+    int r, c;
 
-    private int findNumOfIslands(int[][] grid){
-        r=grid.length;
-        if (r==0) return 0;
-        c=grid[0].length;
-        int numOfIslands=0;
-        for(int i=0;i<r;i++)
-            for(int j=0;j<c;j++)
-            if(grid[i][j]==1){
-                connectLands(grid,i,j);
-                numOfIslands++;
-            }
+    private int findNumOfIslands(int[][] grid) {
+        r = grid.length;
+        if (r == 0) return 0;
+        c = grid[0].length;
+        int numOfIslands = 0;
+        for (int i = 0; i < r; i++)
+            for (int j = 0; j < c; j++)
+                if (grid[i][j] == 1) {
+                    connectLands(grid, i, j);
+                    numOfIslands++;
+                }
 
 
-            return numOfIslands;
+        return numOfIslands;
     }
-private void connectLands(int[][] grid, int i,int j){
-if(i<0||j<0||i>r||j>c||grid[i][j]!=1)
-    return;
-grid[i][j]=1;
-connectLands(grid,i+1,j);
-connectLands(grid,i-1,j);
-connectLands(grid,i,j+1);
-connectLands(grid,i,j-1);
-}
-private static void main(String args[]){
-    NumberOfIslands ni=new NumberOfIslands();
-    ni.findNumOfIslands(new Inputs().get2DIntMatrix());
 
-}
+    private void connectLands(int[][] grid, int i, int j) {
+        if (i < 0 || j < 0 || i > r || j > c || grid[i][j] != 1)
+            return;
+        grid[i][j] = 1;
+        connectLands(grid, i + 1, j);
+        connectLands(grid, i - 1, j);
+        connectLands(grid, i, j + 1);
+        connectLands(grid, i, j - 1);
+    }
+
+    private static void main(String[] args) {
+        NumberOfIslands ni = new NumberOfIslands();
+        ni.findNumOfIslands(new Inputs().get2DIntMatrix());
+
+    }
 
 }
 /*

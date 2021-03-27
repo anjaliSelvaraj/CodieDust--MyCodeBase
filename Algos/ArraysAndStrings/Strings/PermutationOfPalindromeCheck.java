@@ -12,43 +12,43 @@ A permutation is a rearrangement of letters. The palindrome does not need to be 
 EXAMPLE Input: Tact Coa Output: True (permutations: "taco cat'; "atco eta·; etc.)
  */
 
- class PermutationOfPalindromeCheck {
-    String str="";
-    void getAString(){
+class PermutationOfPalindromeCheck {
+    String str = "";
+
+    void getAString() {
         System.out.println("Enter a String:");
-        Scanner s=new Scanner(System.in);
-        String[] given=(s.nextLine()).split(" ");
-        for(String i:given)
-            str=str+i;
+        Scanner s = new Scanner(System.in);
+        String[] given = (s.nextLine()).split(" ");
+        for (String i : given)
+            str = str + i;
     }
-   public boolean isEven(int num)
-    {
+
+    public boolean isEven(int num) {
         return num % 2 == 0;
     }
-    boolean isPermutationOfAPalindrome(String str)
-    {
-        Hashtable<Character,Integer> counter=new Hashtable<Character,Integer>();
-        for(char c:str.toCharArray())
-            if(counter.containsKey(c))
-                counter.put(c,counter.get(c)+1);
+
+    boolean isPermutationOfAPalindrome(String str) {
+        Hashtable<Character, Integer> counter = new Hashtable<Character, Integer>();
+        for (char c : str.toCharArray())
+            if (counter.containsKey(c))
+                counter.put(c, counter.get(c) + 1);
             else
                 counter.put(c, 1);
 
-          int odd=0;
-            for(int i: counter.values())
-                if(!isEven(i))
-                {
-                    odd++;
-                    if(odd>1)
-                        return false;
-                }
+        int odd = 0;
+        for (int i : counter.values())
+            if (!isEven(i)) {
+                odd++;
+                if (odd > 1)
+                    return false;
+            }
 
         return true;
 
     }
-    public static void main(String args[])
-    {
-        PermutationOfPalindromeCheck pop=new PermutationOfPalindromeCheck();
+
+    public static void main(String[] args) {
+        PermutationOfPalindromeCheck pop = new PermutationOfPalindromeCheck();
         System.out.println("***PERMUTATION OF A PALINDROME***");
         pop.getAString();
         System.out.println(pop.isPermutationOfAPalindrome(pop.str));
