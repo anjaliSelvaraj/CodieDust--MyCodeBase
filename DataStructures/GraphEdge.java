@@ -1,4 +1,4 @@
-package Algos.Graphs;
+package DataStructures;
 
 /**
  * Created by ANJALI on 3/22/2017.

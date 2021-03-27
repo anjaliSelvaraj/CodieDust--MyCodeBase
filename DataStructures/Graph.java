@@ -1,4 +1,4 @@
-package Algos.Graphs;
+package DataStructures;
 
 import java.util.HashMap;
 import java.util.List;
@@ -125,7 +125,7 @@ public class Graph {
 
             }
 
-        }// end of while
+        }
 
     }
 
