@@ -65,4 +65,5 @@ class GenerateStringWithOddCountCharactersTest {
         }
         return result;
     }
+
 }
