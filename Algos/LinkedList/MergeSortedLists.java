@@ -17,13 +17,26 @@ public class MergeSortedLists {
     public static void main(String[] args) {
         MergeSortedLists ms = new MergeSortedLists();
         LinkedList list3 = new LinkedList();
-        System.out.println("***MERGE 2 SORTED LISTS***");
+
+        System.out.println("***MERGE 2 SORTED LISTS INTO NEW LIST***");
+        ms.list1 = new Inputs().insertNumbersFromTail();
+        ms.list2 = new Inputs().insertNumbersFromTail();
+        System.out.println("RESULT: ");
+        LinkedList.print(ms.mergeSortedListsIntoNewList(ms.list1.head,ms.list2.head ));
+
+        System.out.println("***MERGE K SORTED LISTS***");
         ms.list1 = new Inputs().insertNumbersFromTail();
         ms.list2 = new Inputs().insertNumbersFromTail();
         list3 = new Inputs().insertNumbersFromTail();
-        //LinkedList.print(ms.mergeSortedLists(ms.list1.head,ms.list2.head ));
+        System.out.println("RESULT: ");
         LinkedList.Node[] nodes = {ms.list1.head, ms.list2.head, list3.head};
         LinkedList.print(ms.myMergeKSorted(nodes));
+
+        System.out.println("***MERGE 2 SORTED LISTS BY SPLICING***");
+        ms.list1 = new Inputs().insertNumbersFromTail();
+        ms.list2 = new Inputs().insertNumbersFromTail();
+        System.out.println("RESULT: ");
+        LinkedList.print(ms.mergeSortedListsIntoNewList(ms.list1.head,ms.list2.head ));
     }
 
     private LinkedList.Node mergeSortedListsIntoNewList(LinkedList.Node head1, LinkedList.Node head2) {
