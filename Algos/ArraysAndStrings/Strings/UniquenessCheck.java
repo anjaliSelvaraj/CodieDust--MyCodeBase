@@ -4,6 +4,9 @@ package Algos.ArraysAndStrings.Strings; /**
 
 /*Implement an algorithm to determine if a string has all unique characters.
  * What if you cannot use additional data structures
+ *
+ * Assumptions:
+ * 1.
  */
 
 // implement using hashmap
